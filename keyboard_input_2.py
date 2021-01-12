@@ -26,15 +26,13 @@ def key_to_str(key):
     elif str(key)[0]=="<" and str(key)[-1]==">":
         strkey=numpadDict[str(key.vk)]
     elif "Key." in str(key):
-        strkey=str(key)[4:]
+        strkey=key.name
     elif "'" in str(key):
         if "\\" in str(key):
-            print(2)
             strkey=ctrlDict[str(key)]
         else:
-            strkey=str(key)[1]
+            strkey=str(key.char)
     else:
-        print(1)
         strkey=str(key)
     return strkey
 
