@@ -35,26 +35,27 @@ def key_to_str(key):
         strkey=str(key)
     return strkey
 
+def updateCanvas(l):
+    canvas.delete("all")
+    canvas.create_text(150,200,font=("Arial",30),text="".join([i+"\n" for i in l]))
+
 def on_press(key):
-    global pressedList,pressed
-    print(key)
+    global pressedList
     key=key_to_str(key)
     if not key in pressedList:
         pressedList.append(key)
-        canvas.delete("all")
-        canvas.create_text(25,150,text="".join([i+"\n" for i in pressedList]))
+        updateCanvas(pressedList)
 
 def on_release(key):
     global pressedList
     pressedList.remove(key_to_str(key))
-    canvas.delete("all")
-    canvas.create_text(25,150,text="".join([i+"\n" for i in pressedList]))
-
-pressed=False    
+    updateCanvas(pressedList)
+    
 root=tk.Tk()
-root.title("Keyboard Inputs #2")
+root.title("Keyboard Inputs")
+root.resizable(False,False)
 root.wm_attributes("-topmost",-1)
-canvas=tk.Canvas(root, height=300,width=300)
+canvas=tk.Canvas(root, height=400,width=300)
 listener=keyboard.Listener(on_press=on_press, on_release=on_release)
 listener.start()
 pressedList=[]
