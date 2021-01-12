@@ -17,7 +17,8 @@ def key_to_str(key):
              "'\\x1d'":"]",
              "'\\x1e'":"^",
              "'\\x1f'":"_",
-             "'\\x00'":"2"}
+             "'\\x00'":"2",
+             "'\\\\'":"\\"}
     tmpDict.update({f"'\\x{i}'": chr(i+102) for i in range(10,20)})
     ctrlDict.update(tmpDict)
     if str(key)==None:
@@ -28,10 +29,12 @@ def key_to_str(key):
         strkey=str(key)[4:]
     elif "'" in str(key):
         if "\\" in str(key):
+            print(2)
             strkey=ctrlDict[str(key)]
         else:
             strkey=str(key)[1]
     else:
+        print(1)
         strkey=str(key)
     return strkey
 
@@ -41,6 +44,7 @@ def updateCanvas(l):
 
 def on_press(key):
     global pressedList
+    print(key)
     key=key_to_str(key)
     if not key in pressedList:
         pressedList.append(key)
