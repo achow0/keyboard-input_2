@@ -1,4 +1,4 @@
 # keyboard-input_2
-Similar to my repo called keyboard-input except it supports (nearly) all keyboard inputs, but it is text-based(even though I used tkinter).
+Text-based keyboard input tracker that shows what keys you are currently pressing.
 ## Dependencies Required
 [Pynput 1.7.2](https://pynput.readthedocs.io/)
