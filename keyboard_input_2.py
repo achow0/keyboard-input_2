@@ -1,6 +1,5 @@
 from pynput import keyboard
 import tkinter as tk
-import os
 def key_to_str(key):
     numpadDict={f"{i+96}": str(i) for i in range(10)}
     numpadDict["110"]="."
